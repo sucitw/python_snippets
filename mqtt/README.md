@@ -10,6 +10,10 @@ This sample conde shows how to connect with mqtt brolers ([mosquitto](https://py
 
     sample code to connect  [CloudMQTT](http://www.cloudmqtt.com)
 
+* config.tmp
+
+    Configuration template. Please rename config.tmp to config.ini and fill corresponding values.
+
 
 ## Getting Started
 ### Enviroment
