@@ -1,4 +1,4 @@
-# inspired and modified from https://github.com/CloudMQTT/python-mqtt-example
+# Inspired and modified from https://github.com/CloudMQTT/python-mqtt-example
 import os
 import configparser
 from urllib.parse import urlparse
@@ -31,21 +31,22 @@ client.on_subscribe = on_subscribe
 #client.on_log = on_log
 
 # Get CLOUDMQTT settings from config.ini 
-config = configparser.ConfigParser()
-config.read('config.ini')
+CONFIG = configparser.ConfigParser()
+CONFIG.read('config.ini')
+CONFIG_MQTT = CONFIG['Cloudmqtt']
+TOPIC = CONFIG_MQTT['TOPIC']
+FIRST_MESSAGE = CONFIG_MQTT['MESSAGE']
 
-config_mqtt = config['Cloudmqtt']
-topic = config_mqtt['TOPIC']
 
 # Connect
-client.username_pw_set(config_mqtt['USER'], config_mqtt['PASSWORD'])
-client.connect(config_mqtt['CLOUDMQTT_URL'], int(config_mqtt['PORT']))
+client.username_pw_set(CONFIG_MQTT['USER'], CONFIG_MQTT['PASSWORD'])
+client.connect(CONFIG_MQTT['CLOUDMQTT_URL'], int(CONFIG_MQTT['PORT']))
 
 # Start subscribe, with QoS level 0
-client.subscribe(topic, 0)
+client.subscribe(TOPIC, 0)
 
 # Publish a message
-client.publish(topic, "my message")
+client.publish(TOPIC, FIRST_MESSAGE)
 
 # Continue the network loop, exit when an error occurs
 rc = 0
