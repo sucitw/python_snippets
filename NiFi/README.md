@@ -3,9 +3,22 @@ This space contains python script exsamples for using in Apache NiFi's scripting
 
 
 ## ExecuteScript Samples
-| Script             | Description                             |
-| :----------------- | :-------------------------------------- |
+| Script             | Description                                       |
+| :----------------- | :------------------------------------------------ |
 | updateAttribute.py | Reading flowfile and update flowfile's attributes |
+
+
+ 
+
+
+## Variable used in ExecuteScript
+ | Variable Name | Description         |
+ | :------------ | :------------------- |
+ | session       | ProcessSession       |
+ | context       | ProcessContext       |
+ | log           | Log Component         |
+ | REL_SUCCESS   | Success Relationship |
+ | REL_FAILURE   | Failure Relationship |
 
 ## Reference:
 * [BatchIQ](https://github.com/BatchIQ/nifi-scripting-samples)
