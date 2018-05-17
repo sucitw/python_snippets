@@ -7,6 +7,7 @@ This space contains python script exsamples for using in Apache NiFi's scripting
 | :----------------- | :------------------------------------------------ |
 | update_attribute.py | Read flowfile and update flowfile's attributes |
 | read_update_content.py| Read and overwirte content |
+| json_to_string_transform.py| Read json and transform to string |
 | json_transform.py  | Update content of json format flowfile                       |
 
 
