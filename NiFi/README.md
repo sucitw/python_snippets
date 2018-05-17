@@ -5,8 +5,10 @@ This space contains python script exsamples for using in Apache NiFi's scripting
 ## ExecuteScript Samples
 | Script             | Description                                       |
 | :----------------- | :------------------------------------------------ |
-| updateAttribute.py | Reading flowfile and update flowfile's attributes |
+| update_attribute.py | Read flowfile and update flowfile's attributes |
+| read_update_content.py| Read and overwirte content |
 | json_transform.py  | Update content of json format flowfile                       |
+
 
 
  
