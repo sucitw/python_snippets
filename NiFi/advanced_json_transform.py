@@ -1,17 +1,34 @@
 ###############################################################################
-# Sample to transform a flowfile with nested json format to string format
+# Sample to transforming a flowfile with json format
 # modified from "https://github.com/BatchIQ/nifi-scripting-samples"
 #
 # Assumed input json format: 
 # {
+#   "timestamp": 1514541007050,
+#   "values":[ 
+#       {
 #           "name": "first",
 #           "value": 12345,
 #           "message": "Foo"
-#           "timesatmp": 151454100705
-#        }
+#           "timesatmp": 1514541007050
+#        },
+#        {
+#           "name": "second",
+#           "value": 12345,
+#           "message": "qoo"
+#            "timesatmp": 1514541004656
+#        },
+#   ]
+# }
 # 
-# output:
-#  first,12345,Foo,1514541007050
+# output
+# {
+#   "tagname": "first",
+#   "value": 152399025,
+#   "message": "Hello World"
+#   "timesatmp": 1514541007050
+#               }
+# }
 ###############################################################################
 
 import json
@@ -32,9 +49,9 @@ class TransformCallback(StreamCallback):
             # Read input FlowFile content
             input_text = IOUtils.toString(inputStream, StandardCharsets.UTF_8)
             input_obj = json.loads(input_text)
-            output_text = "{},{},{},{}".format(input_obj['name'],input_obj['value'],input_obj['message'],input_obj['timestamp'])
+            output_text = input_obj['name']
 
-            outputStream.write(bytearray(output_text.encode('utf-8')))
+            outputStream.write(bytearray(output_text).encode('utf-8'))
         except:
             traceback.print_exc(file=sys.stdout)
             raise
