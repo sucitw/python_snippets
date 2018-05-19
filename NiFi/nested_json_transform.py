@@ -16,7 +16,7 @@
 #           "name": "second",
 #           "value": 12345,
 #           "message": "qoo"
-#            "timesatmp": 1514541004656
+#            "timestamp": 1514541004656
 #        },
 #   ]
 # }
@@ -26,7 +26,7 @@
 #   "tagname": "first",
 #   "value": 152399025,
 #   "message": "Hello World"
-#   "timesatmp": 1514541007050
+#   "timestamp": 1514541007050
 #               }
 # }
 ###############################################################################
@@ -51,7 +51,7 @@ class TransformCallback(StreamCallback):
             input_obj = json.loads(input_text)
             output_text = input_obj['name']
 
-            outputStream.write(bytearray(output_text).encode('utf-8'))
+            outputStream.write(bytearray(output_text.encode('utf-8')))
         except:
             traceback.print_exc(file=sys.stdout)
             raise

@@ -1,22 +1,27 @@
 ###############################################################################
-# Sample to transforming a flowfile with json format
+# Sample to transform a flowfile with nested json format to string format
 # modified from "https://github.com/BatchIQ/nifi-scripting-samples"
 #
-# Assumed input json format: 
-# { 
-#   "tagname": "first",
-#   "value": 12345,
-#   "message": "Foo"
-#   "timestamp": 1514541007050
-#               }
-# output
+# Assumed nested input json format: 
+# 
 # {
-#   "tagname": "first",
-#   "value": 152399025,
-#   "message": "Hello World"
-#   "timestamp": 1514541007050
-#               }
+#   "timestamp": 1514541007050,
+#   "values":[
+#       {
+#           "name": "first",
+#           "value": 12345,
+#           "message": "Foo",
+#           "timestamp": 151454100705
+#       },
+#       {   "name": "second",
+#           "value": 54321,
+#           "message": "Qoo",
+#           "timestamp": 151454188888
+#   }]
 # }
+# output:
+#  first,12345,Foo,1514541007050
+#  second,54321,Qoo,151454188888
 ###############################################################################
 
 import json
@@ -37,15 +42,12 @@ class TransformCallback(StreamCallback):
             # Read input FlowFile content
             input_text = IOUtils.toString(inputStream, StandardCharsets.UTF_8)
             input_obj = json.loads(input_text)
+            for value in input_obj['values']:
+                output_text = "{},{},{},{}".format(value['name'],value['value'],value['message'],value['timestamp'])
 
-            # Transform content
-            output_obj = input_obj
-            output_obj['value'] = output_obj['value'] * output_obj['value']
-            output_obj['message'] = 'Hello World'
+                outputStream.write(bytearray(output_text.encode('utf-8')))
+                outputStream.write(bytearray('\n'.encode('utf-8')))
 
-            # Write output content
-            output_text = json.dumps(output_obj)
-            outputStream.write(StringUtil.toBytes(output_text))
         except:
             traceback.print_exc(file=sys.stdout)
             raise

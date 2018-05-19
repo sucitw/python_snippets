@@ -6,8 +6,8 @@
 # {
 #           "name": "first",
 #           "value": 12345,
-#           "message": "Foo"
-#           "timesatmp": 151454100705
+#           "message": "Foo",
+#           "timestamp": 151454100705
 #        }
 # 
 # output:
