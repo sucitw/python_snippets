@@ -5,5 +5,4 @@ re-usable source codes in Python
 | :----------------------------- | :------------------------------------- |
 | Automate-The-Stuff-With-Python | scripts for automation                 |
 | Design-pattern                 | DP samples                             |
-| NiFi                           | For Apache NiFi's scripting components |
 | mqtt                           | client sample code                     |
