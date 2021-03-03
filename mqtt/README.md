@@ -2,7 +2,7 @@
 
 ## Overview
 
-This sample conde shows how to connect with mqtt brolers ([mosquitto](https://pypi.python.org/pypi/mosquitto/) or [CloudMQTT](http://www.cloudmqtt.com)) to publish and subscribe messages.
+This sample conde shows how to connect with mqtt brokers ([mosquitto](https://pypi.python.org/pypi/mosquitto/) or [CloudMQTT](http://www.cloudmqtt.com)) to publish and subscribe messages.
 
 
 
